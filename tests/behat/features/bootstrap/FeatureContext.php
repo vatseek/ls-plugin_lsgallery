@@ -46,33 +46,6 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @Then /^I fill the element "([^"]*)" value "([^"]*)"$/
-     */
-    public function IFillElement($path, $value) {
-        $element = $this->getSession()->getPage()->find('css', $path);
-        if ($element) {
-            $element->SetValue($value);
-        }
-        else {
-            throw new ExpectationException('Element not found', $this->getSession());
-        }
-    }
-
-    /**
-     * @Given /^I press button css "([^"]*)"$/
-     */
-    public function IPressButtonCss($path)
-    {
-        $element = $this->getSession()->getPage()->find('css', $path );
-        if ($element) {
-            $element->click();
-        }
-        else {
-            throw new ExpectationException('Button not found', $this->getSession());
-        }
-    }
-
-    /**
      * @Then /^I set carma "([^"]*)" to user "([^"]*)"$/
      */
     public function iSetCarmaToUser($carmaPoints, $userName)
@@ -84,5 +57,20 @@ class FeatureContext extends MinkContext
 
         $oUser->setRating((int)$carmaPoints);
         $this->getEngine()->User_Update($oUser);
+    }
+
+    /**
+     * @Then /^I am going to page "([^"]*)"$/
+     */
+    public function iAmGoingToPage($pageUrl)
+    {
+        $activePlugins = $this->getEngine()->Plugin_GetActivePlugins();
+
+        $prefix = '';
+        if (in_array('l10n', $activePlugins)) {
+            $prefix = '/en';
+        }
+
+        $this->getSession()->visit($this->locatePath($prefix . $pageUrl));
     }
 }

@@ -7,9 +7,8 @@ Feature: Lsgallery plugin standart features BDD
   @mink:selenium2
     Scenario: Check voite with negative user rating
       Given I load fixtures for plugin "lsgallery"
-
-      Given I am on "/login"
       Then I set carma "-10" to user "admin"
+      Given I am on homepage
 
       Then I want to login as "admin"
 
@@ -56,8 +55,8 @@ Feature: Lsgallery plugin standart features BDD
     Scenario: Set Like to image
       Given I load fixtures for plugin "lsgallery"
 
-      Given I am on "/login"
       Then I want to login as "admin"
+      Given I am on homepage
 
       Given I am on "/gallery/image/3"
       Then I wait "1000"

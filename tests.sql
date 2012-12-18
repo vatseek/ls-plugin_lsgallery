@@ -1,0 +1,1 @@
+ALTER TABLE `prefix_comment` MODIFY target_type enum('image','topic','talk') DEFAULT 'topic';

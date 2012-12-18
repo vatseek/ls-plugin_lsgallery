@@ -78,6 +78,6 @@ Feature: Lsgallery plugin standart features BDD
     Then I wait "1000"
     Given I am on "/profile/admin/favourites/images/"
 
-    Then I should see in element by css "album-images" values:
+    Then I should see in element by css "content" values:
       | value  |
       | gallery/image/3 |

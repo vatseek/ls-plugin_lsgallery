@@ -1,43 +1,65 @@
 <?php
-/*-------------------------------------------------------
-*
-*   LiveStreet Engine Social Networking
-*   Copyright © 2008 Mzhelskiy Maxim
-*
-*--------------------------------------------------------
-*
-*   Official site: www.livestreet.ru
-*   Contact e-mail: rus.engine@gmail.com
-*
-*   GNU General Public License, version 2:
-*   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-*
----------------------------------------------------------
-*/
+
+/* -------------------------------------------------------
+ *
+ *   LiveStreet Engine Social Networking
+ *   Copyright © 2008 Mzhelskiy Maxim
+ *
+ * --------------------------------------------------------
+ *
+ *   Official site: www.livestreet.ru
+ *   Contact e-mail: rus.engine@gmail.com
+ *
+ *   GNU General Public License, version 2:
+ *   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ *
+  ---------------------------------------------------------
+ */
 /**
  * Настройки для тестового сервера.
  * Для использования - переименовать файл в config.test.php
  * Более детальная информация о запуске тестов в tests/README.RU.md
  */
-
 /**
  * Настройка базы данных
  */
+
+if (!isset($_SERVER['REMOTE_ADDR'])) {
+    $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+}
+
 $config['db']['params']['host'] = 'localhost';
 $config['db']['params']['port'] = '3306';
 $config['db']['params']['user'] = 'root';
-$config['db']['params']['pass'] = '';
-$config['db']['params']['type']   = 'mysql';
+$config['db']['params']['pass'] = '72546831';
+$config['db']['params']['type'] = 'mysql';
 $config['db']['params']['dbname'] = 'social_test';
 $config['db']['table']['prefix'] = 'prefix_';
 
-$config['sys']['cache']['use']    = false; // использовать кеширование или нет
-$config['sys']['cache']['solid']  = false;
 
 $config['module']['user']['captcha_use_registration'] = false;  // проверять поле капчи при регистрации пользователя
+$config['lang']['current'] = 'english';
+$config['lang']['default'] = 'english';
 
+$config['compress']['css']['merge'] = false;       // указывает на необходимость слияния файлов по указанным блокам.
+$config['compress']['css']['use']   = false;       // указывает на необходимость компрессии файлов. Компрессия используется только в активированном режиме слияния файлов.
+
+/**
+ * Параметры компрессии js-файлов
+ */
 $config['compress']['js']['merge']  = false;    // указывает на необходимость слияния файлов по указанным блокам.
 $config['compress']['js']['use']    = false;
+
+
+$config['sys']['cache']['use'] = false;			   // использовать кеширование или нет
+$config['sys']['cache']['type']   = 'file';             // тип кеширования: file и memory. memory использует мемкеш
+$config['sys']['cache']['dir']    = '___path.root.server___/tmp/';       // каталог для файлового кеша, также используется для временных картинок. По умолчанию подставляем каталог для хранения сессий
+$config['sys']['cache']['prefix'] = 'cookorama_cache'; // префикс кеширования, чтоб можно было на одной машине держать несколько сайтов с общим кешевым хранилищем
+$config['sys']['cache']['directory_level'] = 1;         // уровень вложенности директорий файлового кеша
+$config['sys']['cache']['solid']  = true;               // Настройка использования раздельного и монолитного кеша для отдельных операций
+
+$config['module']['user']['captcha_use_registration'] = false;  // проверять поле капчи при регистрации пользователя
+$config['sys']['logs']['file']           = 'log.log';       // файл общего лога
 
 $config['lang']['current'] = 'english';
 $config['lang']['default'] = 'english';

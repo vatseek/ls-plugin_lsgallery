@@ -78,6 +78,7 @@ Feature: Lsgallery plugin standart features BDD
 
     Then print last response
 
+
     Then I should see in element by css "album-images" values:
       | value  |
       | gallery/image/3 |

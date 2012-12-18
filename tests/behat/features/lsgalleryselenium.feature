@@ -68,16 +68,16 @@ Feature: Lsgallery plugin standart features BDD
       | <span class="favourite-count" id="fav_count_image_3"></span> |
 
     Then I press element by css ".topic-info .topic-info-favourite"
-    Then I wait "1000"
+    Then I wait "3000"
+
+    Then print last response
+
     Then I should see in element by css "content" values:
       | value  |
       | <i id="fav_image_3" class="favourite active"></i> |
       | <span class="favourite-count" id="fav_count_image_3">1</span> |
 
     Given I am on "/profile/admin/favourites/images/"
-
-    Then print last response
-
 
     Then I should see in element by css "album-images" values:
       | value  |
